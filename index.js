@@ -1,11 +1,14 @@
-var a = 5;
-var b = 6;
-var c = "i am a"
-
-a = a + 1
-b = b * 2
-c = c + "string"
-
+var a = 10 + 10;
 console.log(a)
+
+var b = 66/33;
 console.log(b)
+
+var c = 88;
+c = c+2;
+c++; //incrementing by 1
+c--;
+c = c%7
+c += 4
+c %= 3
 console.log(c)
