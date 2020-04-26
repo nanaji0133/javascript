@@ -1,89 +1,57 @@
-var global = 10; //without var its a global variable
-
-function sample() {
-    var global1 = 1;
-    global2 = 2; //without var its a global variable
-    console.log("hello world")
-}
-
-sample()
-
-function operations(a, b) {
-    console.log(a + b - global)
-}
-
-operations(100, 30)
-
-var language = "python";
-
-function programming() {
-    // local variable with same name as global can override it and local var scope is only inside fn
-    var language = "js";
-    console.log(language)
-}
-
-programming()
-console.log(language)
-
-function retfn(num) {
-    return num * 5
-}
-
-console.log(retfn(5))
-
-function noRe() {
-    global += 5
-    return global
-    // without return it is undefined variable
-}
-
-console.log(noRe())
-
-// queue
-
-function queue(arr, item) {
-    arr.push(item)
-    return arr.unshift()
-}
-
-var myArr = [1, 2, 3, 4]
-console.log(queue(myArr, 5))
-
-
-function trueOrfalse(num) {
-    if (num % 2 == 0) {
-        return "true"
+function switchfn(num) {
+    var answer;
+    switch (num) {
+        case 1:
+            answer = "one";
+            break;
+        case 2:
+            answer = "two";
+            break;
+        case 3:
+        case 4:
+        case 5:
+            answer = "three";
+            break;
+        default:
+            answer = "returing default value";
+            break;
     }
-    return "false"
+
+    return answer
 }
 
-console.log(trueOrfalse(10))
+console.log(switchfn(3))
 
-// 3 === 3 ans: true 
-// 3 === '3' ans: false, it also check the type
 
-function trueOrfalse(num) {
-    // !== checks for type also
-    if (num !== 1) {
-        return "true"
+// playing card example
+
+var count = 0;
+
+function cc(card) {
+    switch (card) {
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            count++;
+            break;
+        case 10:
+        case "J":
+        case "Q":
+        case "K":
+        case "A":
+            count--;
+            break;
     }
-    return "false"
-}
 
-console.log(trueOrfalse('1'))
-
-// logic operators and --> && and or --> ||
-
-
-function numbering(varn) {
-    if (varn < 5) {
-        return "less then 5"
-    } else if (varn < 10) {
-        return "between 5 and 10"
-    } else {
-        return "greater than 10"
+    var holdbet = "hold";
+    if (count > 0) {
+        holdbet = "bet"
     }
+    return count + " " + holdbet
 }
 
-console.log(numbering(11))
+cc(10); cc(5); cc(6); cc("K"); cc("A");
 
+console.log(cc("Q"))
