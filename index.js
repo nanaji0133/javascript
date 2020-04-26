@@ -1,16 +1,32 @@
-var a = 10 + 10;
-console.log(a)
+var str = "double quotation has to be written like this\" like this";
+var name = "nanaji\"";
+console.log(str)
 
-var b = 66/33;
+var length;
+
+length = name.length;
+console.log(length)
+
+var a = "myself";
+var len;
+len = a.length;
+console.log(len)
+
+var b;
+b = a[0 + 1];
 console.log(b)
 
+// strings are immutable
 
+// arrays
 
-var c = 88;
-c = c+2;
-c++; //incrementing by 1
-c--;
-c = c%7
-c += 4
-c %= 3
-console.log(c)
+var myArray = ["nanaji", 1.2, true, ["nanaji sanka", 22]];
+var data = myArray[0];
+myArray[1] = 22.0;
+myArray.push(["sanka", 15])
+data = myArray.pop()
+data = myArray.shift() 
+myArray.unshift("nanajisanka")
+
+console.log(myArray)
+console.log(data)
