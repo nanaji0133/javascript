@@ -1,32 +1,40 @@
-var str = "double quotation has to be written like this\" like this";
-var name = "nanaji\"";
-console.log(str)
+var global = 10; //without var its a global variable
 
-var length;
+function sample() {
+    var global1 = 1;
+    global2 = 2; //without var its a global variable
+    console.log("hello world")
+}
 
-length = name.length;
-console.log(length)
+sample()
 
-var a = "myself";
-var len;
-len = a.length;
-console.log(len)
+function operations(a, b) {
+    console.log(a + b - global)
+}
 
-var b;
-b = a[0 + 1];
-console.log(b)
+operations(100, 30)
 
-// strings are immutable
+var language = "python";
 
-// arrays
+function programming() {
+    // local variable with same name as global can override it and local var scope is only inside fn
+    var language = "js";
+    console.log(language)
+}
 
-var myArray = ["nanaji", 1.2, true, ["nanaji sanka", 22]];
-var data = myArray[0];
-myArray[1] = 22.0;
-myArray.push(["sanka", 15])
-data = myArray.pop()
-data = myArray.shift() 
-myArray.unshift("nanajisanka")
+programming()
+console.log(language)
 
-console.log(myArray)
-console.log(data)
+function retfn(num) {
+    return num * 5
+}
+
+console.log(retfn(5))
+
+function noRe() {
+    global += 5
+    return global
+    // without return it is undefined variable
+}
+
+console.log(noRe())
