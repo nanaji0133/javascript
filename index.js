@@ -1,17 +1,41 @@
-// objects are simillar to array but uses properties instead of indexs
+var myArray = [];
 
-var profile = {
-    "first name": "nanaji",
-    "last name": "sanka",
-    "age": 22,
-    "education": ["Btech", "Masters"],
-};
-profile.age = 23  //updating property
-delete profile["last name"]
-var first = profile["first name"]
-var myAge = profile.age
+var i = 10;
+while (i < 5) {
+    myArray.push(i)
+    i++;
+}
 
-profile["education"].push("intermediate")
+console.log(myArray)
 
-console.log(profile["education"], first, myAge)
-console.log(profile.hasOwnProperty("last name"))
+// do...while loop
+
+do {
+    myArray.push(i);
+    i++;
+} while (i < 5)
+
+console.log(myArray)
+
+for (var j = 0; j < 100; j += 10) {
+    myArray.push(j)
+}
+
+console.log(myArray)
+
+// for loop inside a for loop
+
+function forInsidefor(arr) {
+    var p = 1;
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr[i].length; j++) {
+            p *= arr[i][j]
+        }
+    }
+
+    return p
+}
+
+myArray1 = [[1, 2], [3, 4]]
+
+console.log(forInsidefor(myArray1))
