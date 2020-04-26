@@ -1,57 +1,17 @@
-function switchfn(num) {
-    var answer;
-    switch (num) {
-        case 1:
-            answer = "one";
-            break;
-        case 2:
-            answer = "two";
-            break;
-        case 3:
-        case 4:
-        case 5:
-            answer = "three";
-            break;
-        default:
-            answer = "returing default value";
-            break;
-    }
+// objects are simillar to array but uses properties instead of indexs
 
-    return answer
-}
+var profile = {
+    "first name": "nanaji",
+    "last name": "sanka",
+    "age": 22,
+    "education": ["Btech", "Masters"],
+};
+profile.age = 23  //updating property
+delete profile["last name"]
+var first = profile["first name"]
+var myAge = profile.age
 
-console.log(switchfn(3))
+profile["education"].push("intermediate")
 
-
-// playing card example
-
-var count = 0;
-
-function cc(card) {
-    switch (card) {
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-            count++;
-            break;
-        case 10:
-        case "J":
-        case "Q":
-        case "K":
-        case "A":
-            count--;
-            break;
-    }
-
-    var holdbet = "hold";
-    if (count > 0) {
-        holdbet = "bet"
-    }
-    return count + " " + holdbet
-}
-
-cc(10); cc(5); cc(6); cc("K"); cc("A");
-
-console.log(cc("Q"))
+console.log(profile["education"], first, myAge)
+console.log(profile.hasOwnProperty("last name"))
