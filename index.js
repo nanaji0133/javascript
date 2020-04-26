@@ -1,41 +1,29 @@
-var myArray = [];
+myArray = [
+    {
+        "name": "nanaji",
+        "surname": "sanka",
+        "age": 22
+    },
 
-var i = 10;
-while (i < 5) {
-    myArray.push(i)
-    i++;
-}
+    {
+        "name": "shree",
+        "surname": "ranga",
+        "age": 31
+    },
+];
 
-console.log(myArray)
 
-// do...while loop
-
-do {
-    myArray.push(i);
-    i++;
-} while (i < 5)
-
-console.log(myArray)
-
-for (var j = 0; j < 100; j += 10) {
-    myArray.push(j)
-}
-
-console.log(myArray)
-
-// for loop inside a for loop
-
-function forInsidefor(arr) {
-    var p = 1;
-    for (var i = 0; i < arr.length; i++) {
-        for (var j = 0; j < arr[i].length; j++) {
-            p *= arr[i][j]
+function propValue(fname, prop) {
+    for (var i = 0; i < myArray.length; i++) {
+        if (myArray[i]["name"] === fname) {
+            if (myArray[i][prop]) {
+                return myArray[i][prop]
+            } else {
+                return "no such prop existing"
+            }
         }
     }
-
-    return p
+    return "no fname"
 }
 
-myArray1 = [[1, 2], [3, 4]]
-
-console.log(forInsidefor(myArray1))
+console.log(propValue("nanajioo", "age1"))
