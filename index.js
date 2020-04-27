@@ -1,8 +1,11 @@
-// ternary operation 
-// check +,- or 0
+"use strict";
 
-function ternary(num) {
-    return num > 0 ? "positive" : num < 0 ? "negative" : "zero"
+var i = "nanaji"
+function test() {
+    let i = "sanka";
 }
 
-console.log(ternary(-10))
+
+console.log(test())
+console.log(i)
+
