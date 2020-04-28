@@ -1,38 +1,51 @@
-"use strict";
+// destruction
+
+var sample = {
+    x: 2,
+    y: 3,
+    z: {
+        p: 4,
+        q: 5
+    },
+};
 
 
-// arrow function or annonumous function
-
-// cont varfn = function () {
-//     return "arow function"
-// }
-
-
-const varfn = () => "arrow function";
-
-const varfn1 = (num1, num2) => num1+num2;
-
-
-console.log(varfn)
-console.log(varfn1(3,5))
-
-
-const myArr = [1, 2, -3, -4, 5];
-
-const squareList = (arr) => {
-    const squared = arr.filter(num => Number.isInteger(num) && num>0).map(x => x*x)
-    return squared
+function destructionfn()
+{
+    // var { z: a } = sample
+    // var { p: u } = a
+    // console.log(a)
+    var { z: { q: u } } = sample
+    return u
 }
 
-const squareOutput = squareList(myArr)
-console.log(squareOutput)
+
+console.log(destructionfn())
 
 
-const increment = (function() {
-    return function increment (num, value=1) {
-        return num + value
-    };
+const [x, , , , z] = [1, 2, 3, 4, 5, 6];
+console.log(x, z);
+
+let a = 4, b = 6;
+// below function is a self-invoking function
+// (function ()
+// {
+//     [a, b] = [b, a]
+// })();
+// or
+(() =>
+{
+    [a, b] = [b, a]
 })();
+console.log(a, b);
 
-console.log(increment(5,2))
-console.log(increment(5))
+
+const myArr = [1, 2, 3, 4, 5, 6];
+
+function removeTwo()
+{
+    [, , ...arr] = myArr
+    return arr
+}
+
+console.log(removeTwo())
