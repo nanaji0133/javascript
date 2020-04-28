@@ -1,30 +1,17 @@
-const bi = (() =>
+var profile = {
+    "name": "nanaji sanka",
+    "age": 22,
+    "education": ["masters", "Btech"]
+};
+
+const op = (() =>
 {
-    return function add(a, b)
-    {
-        return a + b
-    }
-})();
+    return `my name is ${profile.name} and age is ${profile.age}.
+        my educations are ${profile.education}`
+})
 
-console.log(bi(4, 5))
+console.log(op());
 
-const values = {
-    x: 4,
-    y: 5,
-    z: 6,
-}
+const person = (name, age, gender) => ({ name, age, gender })
 
-const avg = (() =>
-{
-    return function avg({ x, y })
-    {
-        return x + y
-    }
-    // return function avg(arr)
-    // {
-    //     return arr.x + arr.y
-    // }
-})()
-
-
-console.log(avg(values))
+console.log(person("nanaji", "23", "male"))
