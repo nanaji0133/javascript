@@ -1,17 +1,61 @@
-var profile = {
-    "name": "nanaji sanka",
-    "age": 22,
-    "education": ["masters", "Btech"]
+class SpaceShuttle
+{
+    constructor(planet)
+    {
+        this.planet = planet
+    }
 };
 
-const op = (() =>
+let zeus = new SpaceShuttle('jupiter');
+
+console.log(zeus.planet);
+
+
+
+function vegetable()
 {
-    return `my name is ${profile.name} and age is ${profile.age}.
-        my educations are ${profile.education}`
-})
+    class Veg
+    {
+        constructor(name)
+        {
+            this.name = name
+        }
+    }
+    return Veg
+};
 
-console.log(op());
+let vegetablefn = vegetable();
+let vegname = new vegetablefn('carrot');
 
-const person = (name, age, gender) => ({ name, age, gender })
+console.log(vegname);
 
-console.log(person("nanaji", "23", "male"))
+
+// using getter and setter
+
+function makeclass()
+{
+    class Temperature
+    {
+        constructor(temp)
+        {
+            this._temp = 5 / 9 * (temp - 32)
+        }
+        get tempvalue()
+        {
+            return this._temp
+        }
+        set tempvalue(updatedtemp)
+        {
+            this._temp = 5 / 9 * (updatedtemp - 32)
+        }
+    }
+    return Temperature
+};
+
+const thermostat = makeclass();
+let thermovalue = new thermostat(76);
+let tv = thermovalue.tempvalue;
+console.log(tv);
+thermovalue.tempvalue = 50;
+tv = thermovalue.tempvalue;
+console.log(tv)
