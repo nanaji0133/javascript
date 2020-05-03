@@ -1,50 +1,24 @@
-const customName = document.getElementById("customname");
-const randomize = document.querySelector(".randomize");
-const story = document.querySelector(".story");
+const weather = document.querySelector("select");
+const para = document.querySelector("p");
 
-function randomValueFromArray(array)
+weather.addEventListener("change", myFn)
+
+function myFn()
 {
-    const random = Math.floor(Math.random() * array.length);
-    return array[random]
-}
+    const forecast = weather.value;
 
-let storyText = "It was 94 fahrenheit outside, so :xitem went for a walk. When they got to :yitem, they stared in horror for a few moments, then :zitem. Bob saw the whole thing, but was not surprised — :xitem weighs 300 pounds, and it was a hot day.";
-let insertX = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
-let insertY = ["the soup kitchen", "Disneyland", "the White House"];
-let insertZ = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away"];
-
-randomize.addEventListener("click", result)
-
-
-
-function result()
-{
-    let xItem = randomValueFromArray(insertX)
-    let yItem = randomValueFromArray(insertY)
-    let zItem = randomValueFromArray(insertZ)
-
-    let newStory = storyText
-    newStory = newStory.replace(/:xitem/g, xItem)
-    newStory = newStory.replace(":yitem", yItem)
-    newStory = newStory.replace(":zitem", zItem)
-
-    if (customName.value !== "")
+    switch (forecast)
     {
-        let name = customName.value;
-        newStory = newStory.replace("Bob", name)
+        case "sunny":
+            para.textContent = "its hot";
+            break;
+        case "windy":
+            para.textContent = "its windy";
+            break;
+        case "rainy":
+            para.textContent = "its raining outside";
+            break;
+        default:
+            para.textContent = "nothing";
     }
-
-    if (document.getElementById("uk").checked)
-    {
-        let weight = Math.round(400);
-        let stone = weight + " stone"
-        newStory = newStory.replace("300 pounds", stone)
-        let temperature = Math.round((5 / 9) * (94 - 32));
-        let fahrenheit = temperature + " fahrenheit"
-        newStory = newStory.replace("94 fahrenheit", fahrenheit)
-    }
-
-    story.textContent = newStory;
-    story.style.visibility = "visible";
-
 }
