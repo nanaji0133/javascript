@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+            background-image: url("favicon.png");
+            background-repeat: no-repeat;
+            /* background-size: 100% 100%; */
+            background-attachment: fixed;
+            /* display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-rows: 96vh 4vh; */
+        }
+
+        #container {
+            /* display: flex; */
+            /* width: 100%; */
+            /*display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-items: end; */
+            height: 96vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #container h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+            /* height: 200px;
+            width: 600px; */
+            background-color: brown;
+        }
+
+        #container p {
+            font-size: 23px;
+            margin-bottom: 8px;
+            /* height: 200px;
+            width: 600px; */
+            background-color: blue;
+        }
+
+        .foot {
+            font-size: small;
+        }
+
+        .terms {
+            text-decoration: none;
+            margin-left: 780px;
+            color: black;
+        }
+
+        .privacy {
+            text-decoration: none;
+            margin-left: 30px;
+            color: black;
+        }
+
+        .rights {
+            margin-left: 60px;
+            padding-right: 20px;
+            margin-right: 20px;
+
+        }
+
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="discription" content="Official Storyfeed Website">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Storyfeed</title>
+        <link rel="shortcut icon" type="image/png" href="favicon.png">
+    </head>
+
+    <body>
+
+
+        <header id="container">
+            <h1 id="heading"><b>Storyfeed</b></h1>
+            <p>Share your moments in a fun and more meaningful way.</p>
+            <p>Beta coming soon!!!</p>
+        </header>
+
+        <footer class="foot">
+            <a href="{% url 'terms-storyfeed' %}" class="terms">TERMS</a>
+            <a href="{% url 'privacy-storyfeed' %}" class="privacy">PRIVACY</a>
+            <span class="rights">© 2020 Storyfeed Inc. All Rights Reserved.</span>
+
+        </footer>
+
+    </body>
+
+</html>
