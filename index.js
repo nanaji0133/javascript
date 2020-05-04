@@ -1,12 +1,28 @@
-let myArray = ['tomatoes', 'chick peas', 'onions', 'rice', 'black beans'];
-let list = document.createElement("ol")
+let searchName = "Mustafa";
+let i = 0;
+let para = document.createElement("p");
 
+let phonebook = [
+    { name: 'Chris', number: '1549' },
+    { name: 'Li Kang', number: '9634' },
+    { name: 'Anne', number: '9065' },
+    { name: 'Francesca', number: '3001' },
+    { name: 'Mustafa', number: '6888' },
+    { name: 'Tina', number: '4312' },
+    { name: 'Bert', number: '7780' },
+    { name: 'Jada', number: '2282' },
+];
 
-for (let i = 0; i < myArray.length; i++)
+while (i < phonebook.length)
 {
-    let childList = document.createElement("li")
-    childList.textContent = myArray[i]
-    list.appendChild(childList)
+    if (phonebook[i].name === searchName)
+    {
+
+        para.textContent = `${searchName} contact is ${phonebook[i].number}`;
+        break;
+    }
+    i++;
 }
-const section = document.querySelector("section")
-section.appendChild(list)
+
+let section = document.querySelector("section")
+section.appendChild(para)
