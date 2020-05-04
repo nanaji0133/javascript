@@ -1,28 +1,30 @@
-let searchName = "Mustafa";
-let i = 0;
+let i = 500;
+let section = document.querySelector("section");
 let para = document.createElement("p");
+// para.textContent = ""
 
-let phonebook = [
-    { name: 'Chris', number: '1549' },
-    { name: 'Li Kang', number: '9634' },
-    { name: 'Anne', number: '9065' },
-    { name: 'Francesca', number: '3001' },
-    { name: 'Mustafa', number: '6888' },
-    { name: 'Tina', number: '4312' },
-    { name: 'Bert', number: '7780' },
-    { name: 'Jada', number: '2282' },
-];
-
-while (i < phonebook.length)
+do
 {
-    if (phonebook[i].name === searchName)
+    let para2 = document.createElement("p")
+    function isprime(i)
     {
-
-        para.textContent = `${searchName} contact is ${phonebook[i].number}`;
-        break;
+        for (let num = 2; num < i; num++)
+        {
+            if (i % num === 0)
+            {
+                return false
+            }
+        }
+        return true
     }
-    i++;
-}
+    if (isprime(i))
+    {
+        para2.textContent = i;
+        para.appendChild(para2)
+    }
+    i--;
+} while (i > 0);
 
-let section = document.querySelector("section")
+// para.textContent = para.textContent.slice(0, para.textContent.length-2) + "."
+
 section.appendChild(para)
