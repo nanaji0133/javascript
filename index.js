@@ -1,24 +1,12 @@
-const weather = document.querySelector("select");
-const para = document.querySelector("p");
+let myArray = ['tomatoes', 'chick peas', 'onions', 'rice', 'black beans'];
+let list = document.createElement("ol")
 
-weather.addEventListener("change", myFn)
 
-function myFn()
+for (let i = 0; i < myArray.length; i++)
 {
-    const forecast = weather.value;
-
-    switch (forecast)
-    {
-        case "sunny":
-            para.textContent = "its hot";
-            break;
-        case "windy":
-            para.textContent = "its windy";
-            break;
-        case "rainy":
-            para.textContent = "its raining outside";
-            break;
-        default:
-            para.textContent = "nothing";
-    }
+    let childList = document.createElement("li")
+    childList.textContent = myArray[i]
+    list.appendChild(childList)
 }
+const section = document.querySelector("section")
+section.appendChild(list)
