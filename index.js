@@ -1,30 +1,44 @@
-let i = 500;
-let section = document.querySelector("section");
-let para = document.createElement("p");
-// para.textContent = ""
+let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+console.log(names.length)
+let para = document.createElement('p');
+// let randNum = Math.floor(Math.random() * names.length)
+// console.log(randNum)
 
-do
+function random(min, max)
 {
-    let para2 = document.createElement("p")
-    function isprime(i)
-    {
-        for (let num = 2; num < i; num++)
-        {
-            if (i % num === 0)
-            {
-                return false
-            }
-        }
-        return true
-    }
-    if (isprime(i))
-    {
-        para2.textContent = i;
-        para.appendChild(para2)
-    }
-    i--;
-} while (i > 0);
+    const num = Math.floor(Math.random() * (max - min)) + min;
+    return num
+}
 
-// para.textContent = para.textContent.slice(0, para.textContent.length-2) + "."
+function chooseName()
+{
+    // return names[randNum]
+    return names[random(0, names.length)]
 
-section.appendChild(para)
+
+}
+
+para.textContent = chooseName()
+
+const section = document.querySelector('section');
+
+section.appendChild(para);
+
+let canvas = document.querySelector("canvas");
+let ctx = canvas.getContext("2d");
+
+let x = 50;
+let y = 60;
+let width = 100;
+let heigth = 75;
+let color = "blue";
+
+function drawRect(x, y, width, heigth, color)
+{
+    ctx.fillStyle = "white"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, heigth)
+}
+
+drawRect(x, y, width, heigth, color)
