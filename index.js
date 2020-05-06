@@ -1,44 +1,35 @@
-let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
-console.log(names.length)
-let para = document.createElement('p');
-// let randNum = Math.floor(Math.random() * names.length)
-// console.log(randNum)
-
-function random(min, max)
+function displayMsg(msgText, msgType)
 {
-    const num = Math.floor(Math.random() * (max - min)) + min;
-    return num
+    let html = document.querySelector("html");
+    let pannel = document.createElement("div");
+    html.appendChild(pannel)
+    let msg = document.createElement("p");
+    msg.textContent = msgText;
+    pannel.appendChild(msg)
+    let msgBtn = document.createElement("button")
+    msgBtn.textContent = "X"
+    pannel.appendChild(msgBtn)
+
+    if (msgType === "warning")
+    {
+        msg.style.backgroundImage = "url(img/warning.png)";
+        pannel.style.backgroundColor = "red";
+    } else if (msgType === "chat")
+    {
+        msg.style.backgroundImage = "url(img/chat.png)";
+
+    }
+
+    msgBtn.onclick = function ()
+    {
+        pannel.parentNode.removeChild(pannel)
+    }
 }
 
-function chooseName()
+let button = document.querySelector("button");
+
+button.onclick = function ()
 {
-    // return names[randNum]
-    return names[random(0, names.length)]
-
-
+    displayMsg("this is msg", "chat")
 }
 
-para.textContent = chooseName()
-
-const section = document.querySelector('section');
-
-section.appendChild(para);
-
-let canvas = document.querySelector("canvas");
-let ctx = canvas.getContext("2d");
-
-let x = 50;
-let y = 60;
-let width = 100;
-let heigth = 75;
-let color = "blue";
-
-function drawRect(x, y, width, heigth, color)
-{
-    ctx.fillStyle = "white"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, heigth)
-}
-
-drawRect(x, y, width, heigth, color)
