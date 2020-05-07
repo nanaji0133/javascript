@@ -1,104 +1,89 @@
 <!DOCTYPE html>
 <html>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.5;
-            background-image: url("favicon.png");
-            background-repeat: no-repeat;
-            /* background-size: 100% 100%; */
-            background-attachment: fixed;
-            /* display: grid;
-            justify-items: center;
-            align-items: center;
-            grid-template-rows: 96vh 4vh; */
-        }
-
-        #container {
-            /* display: flex; */
-            /* width: 100%; */
-            /*display: grid;
-            grid-template-rows: 1fr 1fr 1fr;
-            justify-items: end; */
-            height: 96vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        #container h1 {
-            font-size: 50px;
-            margin-bottom: 10px;
-            /* height: 200px;
-            width: 600px; */
-            background-color: brown;
-        }
-
-        #container p {
-            font-size: 23px;
-            margin-bottom: 8px;
-            /* height: 200px;
-            width: 600px; */
-            background-color: blue;
-        }
-
-        .foot {
-            font-size: small;
-        }
-
-        .terms {
-            text-decoration: none;
-            margin-left: 780px;
-            color: black;
-        }
-
-        .privacy {
-            text-decoration: none;
-            margin-left: 30px;
-            color: black;
-        }
-
-        .rights {
-            margin-left: 60px;
-            padding-right: 20px;
-            margin-right: 20px;
-
-        }
-
-    </style>
-
     <head>
-        <meta charset="UTF-8">
-        <meta name="discription" content="Official Storyfeed Website">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Storyfeed</title>
-        <link rel="shortcut icon" type="image/png" href="favicon.png">
+        <meta charset="utf-8">
+        <title>Object-oriented JavaScript class further exercises</title>
     </head>
 
     <body>
-
-
-        <header id="container">
-            <h1 id="heading"><b>Storyfeed</b></h1>
-            <p>Share your moments in a fun and more meaningful way.</p>
-            <p>Beta coming soon!!!</p>
-        </header>
-
-        <footer class="foot">
-            <a href="{% url 'terms-storyfeed' %}" class="terms">TERMS</a>
-            <a href="{% url 'privacy-storyfeed' %}" class="privacy">PRIVACY</a>
-            <span class="rights">© 2020 Storyfeed Inc. All Rights Reserved.</span>
-
-        </footer>
+        <p>This example requires you to enter commands in your browser's JavaScript console (see <a
+                href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What
+                are browser developer tools</a> for more information).</p>
 
     </body>
+
+    <script>
+        function Person(first, last, age, gender, interests)
+        {
+            this.name = {
+                'first': first,
+                'last': last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function ()
+            {
+                // First define a string, and make it equal to the part of
+                // the bio that we know will always be the same.
+                var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+                // define a variable that will contain the pronoun part of
+                // the second sentence
+                var pronoun;
+
+                // check what the value of gender is, and set pronoun
+                // to an appropriate value in each case
+                if (this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M')
+                {
+                    pronoun = 'He likes ';
+                } else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F')
+                {
+                    pronoun = 'She likes ';
+                } else
+                {
+                    pronoun = 'They like ';
+                }
+
+                // add the pronoun string on to the end of the main string
+                string += pronoun;
+
+                // use another conditional to structure the last part of the
+                // second sentence depending on whether the number of interests
+                // is 1, 2, or 3
+                if (this.interests.length === 1)
+                {
+                    string += this.interests[0] + '.';
+                } else if (this.interests.length === 2)
+                {
+                    string += this.interests[0] + ' and ' + this.interests[1] + '.';
+                } else
+                {
+                    // if there are more than 2 interests, we loop through them
+                    // all, adding each one to the main string followed by a comma,
+                    // except for the last one, which needs an and & a full stop
+                    for (var i = 0; i < this.interests.length; i++)
+                    {
+                        if (i === this.interests.length - 1)
+                        {
+                            string += 'and ' + this.interests[i] + '.';
+                        } else
+                        {
+                            string += this.interests[i] + ', ';
+                        }
+                    }
+                }
+
+                // finally, with the string built, we alert() it
+                alert(string);
+            };
+            this.greeting = function ()
+            {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+        };
+
+        let person1 = new Person('Tammi', 'Smith', 32, 'neutral', ['music', 'skiing', 'kickboxing']);
+    </script>
 
 </html>
