@@ -1,35 +1,29 @@
-function Person(first, last, age, gender, interest)
-{
-    this.name = {
-        first: first,
-        last: last,
-    }
-    this.age = age;
-    this.gender = gender;
-    this.interest = interest;
-    let bioStr = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ';
-    for (let i = 0; i < this.interest.length; i++)
-    {
-        if (i === this.interest.length - 1)
-        {
-            bioStr += " and " + this.interest[i] + "."
-        } else
-        {
-            bioStr += this.interest[i] + ", "
-        }
+let btn = document.getElementById("btn");
+let para = document.querySelector(".display");
+let num = 0;
 
-    }
-    if (this.gender === "female")
+function displayNum(optsSltd)
+{
+    for (let i = 0; i < optsSltd.options.length; i++)
     {
-        bioStr = bioStr.replace("He", "She")
+        if (optsSltd.options[i].selected)
+        {
+            num++
+        }
     }
-    this.bio = function ()
-    {
-        alert(bioStr);
-    };
-    this.greeting = function ()
-    {
-        alert("my name is " + this.name.first + ".")
-    }
+    return num
 }
+
+btn.onclick = function ()
+{
+    let newPara = document.createElement("p")
+    newPara.textContent = displayNum(document.selectForms.musicTypes)
+    para.appendChild(newPara)
+    // alert(displayNum(document.selectForms.musicTypes))
+};
+
+
+
+
+
 
