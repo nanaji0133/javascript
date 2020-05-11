@@ -1,29 +1,34 @@
-let btn = document.getElementById("btn");
-let para = document.querySelector(".display");
-let num = 0;
-
-function displayNum(optsSltd)
+class Person
 {
-    for (let i = 0; i < optsSltd.options.length; i++)
-    {
-        if (optsSltd.options[i].selected)
-        {
-            num++
-        }
-    }
-    return num
+  constructor(name, born_year)
+  {
+    this.name = name
+    this.born_year = born_year
+  }
+
+  get age()
+  {
+    return this.callAge()
+  }
+
+  callAge()
+  {
+    return new Date().getFullYear() - this.born_year
+  }
 }
 
-btn.onclick = function ()
+class Juggler extends Person
 {
-    let newPara = document.createElement("p")
-    newPara.textContent = displayNum(document.selectForms.musicTypes)
-    para.appendChild(newPara)
-    // alert(displayNum(document.selectForms.musicTypes))
-};
+  get age()
+  {
+    super.callAge()
+  }
+}
 
 
+let nanaji = new Person("nanaji", 1997)
+let sanka = new Juggler("sanka", 1995)
 
-
-
+console.log(nanaji.name + " age is " + nanaji.age)
+console.log(Juggler.name + " age is " + Juggler.age)
 
