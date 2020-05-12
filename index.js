@@ -1,34 +1,41 @@
-class Person
+class listBinding
 {
-  constructor(name, born_year)
+  constructor(elements)
   {
-    this.name = name
-    this.born_year = born_year
+    this.elements = elements;
+    this.myList = ["hi"];
   }
 
-  get age()
+  static itemsBinding(item)
   {
-    return this.callAge()
+    let newLi = document.createElement("li")
+    newLi.textContent = item
+    return newLi
   }
 
-  callAge()
+  update()
   {
-    return new Date().getFullYear() - this.born_year
+    while (this.elements.firstChild)
+    {
+      this.elements.removeChild(this.elements.firstChild)
+    }
+
+    for (let items of this.myList)
+    {
+      this.elements.appendChild(listBinding.itemsBinding(items))
+    }
+
+  }
+
+  add(item)
+  {
+    this.myList.push(item)
+    this.update()
+  }
+
+  remove(index)
+  {
+    this.myList.slice(index, 1)
+    this.update()
   }
 }
-
-class Juggler extends Person
-{
-  get age()
-  {
-    super.callAge()
-  }
-}
-
-
-let nanaji = new Person("nanaji", 1997)
-let sanka = new Juggler("sanka", 1995)
-
-console.log(nanaji.name + " age is " + nanaji.age)
-console.log(Juggler.name + " age is " + Juggler.age)
-

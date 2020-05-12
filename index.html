@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
-        <meta charset="utf-8">
-        <title>Object-oriented JavaScript example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>classes in practice</title>
     </head>
 
     <body>
-        <form name="selectForms">
-            <p>
-                <label for="musicTypes"> select options</label>
-                <select name="musicTypes" id="musicTypes" multiple="multiple">
-                    <option value="A" selected="selected">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                </select>
-            </p>
-            <p class="display">
-                <input type="button" name="buttopn" id="btn" value="How many are selected" />
-            </p>
-        </form>
+        <h1>list of items</h1>
 
-        <script src="index.js"> </script>
+        <ul id="myList">
+            <li>hello</li>
+
+        </ul>
+
+        <script src="index.js">
+
+        </script>
+
+        <script>
+            let myList = document.getElementById("myList");
+            let newList = new listBinding(myList);
+        </script>
+
     </body>
 
 </html>
