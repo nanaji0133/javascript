@@ -10,13 +10,14 @@ keys.addEventListener("click", e =>
         let action = key.dataset.action;
         let keyContent = key.textContent;
         let displayNum = display.textContent;
-        // let value1 = [];
-        // let operand1 = [];
+        let clearBtn = document.querySelector("[data-action=clear]")
+        clearBtn.textContent = "CE"
         Array.from(key.parentNode.children).forEach(k => k.classList.remove("is-depressed"));
 
         if (!action)
         {
-            if (displayNum === "0" || calculator.dataset.previousKeyType === "operator")
+            if (displayNum === "0" || calculator.dataset.previousKeyType === "operator" ||
+                calculator.dataset.previousKeyType === "calculate")
             {
                 display.textContent = keyContent
             } else
@@ -32,15 +33,19 @@ keys.addEventListener("click", e =>
             const operator = calculator.dataset.operator
             const secondValue = displayNum
 
-            if (firstValue && operator && calculator.dataset.previousKeyType !== "operator")
+            if (firstValue && operator &&
+                calculator.dataset.previousKeyType !== "operator" &&
+                calculator.dataset.previousKeyType !== "calculate" &&
+                calculator.dataset.previousKeyType !== "number")
             {
                 const calValue = calculate(firstValue, secondValue, operator)
                 display.textContent = calValue
+
             }
 
             key.classList.add("is-depressed")
             calculator.dataset.previousKeyType = "operator"
-            calculator.dataset.firstValue = displayNum
+            calculator.dataset.firstValue = display.textContent
             calculator.dataset.operator = action
             // display.textContent = keyContent
         }
@@ -49,7 +54,8 @@ keys.addEventListener("click", e =>
 
         if (action === "decimal")
         {
-            if (calculator.dataset.previousKeyType === "operator")
+            if (calculator.dataset.previousKeyType === "operator" ||
+                calculator.dataset.previousKeyType === "calculate")
             {
                 display.textContent = "0."
             } else if (!displayNum.includes("."))
@@ -64,12 +70,29 @@ keys.addEventListener("click", e =>
             let firstValue = calculator.dataset.firstValue
             let secondValue = displayNum
             let operand = calculator.dataset.operator
-            calculator.dataset.previousKeyType = "calculate"
-            display.textContent = calculate(firstValue, secondValue, operand)
+            if (firstValue)
+            {
+                if (calculator.dataset.previousKeyType !== "calculate" &&
+                    calculator.dataset.previousKeyType !== "operator")
+                {
+                    display.textContent = calculate(firstValue, secondValue, operand)
+                }
+                calculator.dataset.previousKeyType = "calculate"
+            }
+            clearBtn.textContent = "AC"
         }
 
         if (action === "clear")
         {
+            if (calculator.dataset.previousKeyType === "calculate")
+            {
+                display.textContent = "0";
+                calculator.dataset.firstValue = "";
+                calculator.dataset.secondValue = "";
+                calculator.dataset.operator = "";
+                calculator.dataset.previousKeyType = "";
+                clearBtn.textContent = "CE"
+            }
             calculator.dataset.previousKeyType = "clear"
             display.textContent = displayNum.length === 1 ? "0" : displayNum.slice(0, -1)
         }
@@ -83,4 +106,3 @@ function calculate(a, b, operand)
             operand === "multiply" ? Number(a) * Number(b) :
                 Number(a) / Number(b)
 }
-
