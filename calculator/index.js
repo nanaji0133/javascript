@@ -35,8 +35,8 @@ keys.addEventListener("click", e =>
 
             if (firstValue && operator &&
                 calculator.dataset.previousKeyType !== "operator" &&
-                calculator.dataset.previousKeyType !== "calculate" &&
-                calculator.dataset.previousKeyType !== "number")
+                calculator.dataset.previousKeyType !== "calculate"
+            )
             {
                 const calValue = calculate(firstValue, secondValue, operator)
                 display.textContent = calValue
@@ -77,8 +77,8 @@ keys.addEventListener("click", e =>
                 {
                     display.textContent = calculate(firstValue, secondValue, operand)
                 }
-                calculator.dataset.previousKeyType = "calculate"
             }
+            calculator.dataset.previousKeyType = "calculate"
             clearBtn.textContent = "AC"
         }
 
@@ -92,17 +92,21 @@ keys.addEventListener("click", e =>
                 calculator.dataset.operator = "";
                 calculator.dataset.previousKeyType = "";
                 clearBtn.textContent = "CE"
+            } else
+            {
+                display.textContent = displayNum.length === 1 ? "0" : displayNum.slice(0, -1)
             }
             calculator.dataset.previousKeyType = "clear"
-            display.textContent = displayNum.length === 1 ? "0" : displayNum.slice(0, -1)
         }
     }
 })
 
 function calculate(a, b, operand)
 {
-    return operand === "add" ? Number(a) + Number(b) :
-        operand === "subtract" ? Number(a) - Number(b) :
-            operand === "multiply" ? Number(a) * Number(b) :
-                Number(a) / Number(b)
+    const x = parseFloat(a);
+    const y = parseFloat(b);
+    return operand === "add" ? x + y :
+        operand === "subtract" ? x - y :
+            operand === "multiply" ? x * y :
+                x / y
 }
